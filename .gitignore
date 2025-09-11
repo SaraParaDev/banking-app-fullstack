@@ -16,7 +16,6 @@ Thumbs.db
 *.iml
 .vscode/
 .bin/
-**/.bin/
 .cache/
 **/node_modules/.cache/
 
