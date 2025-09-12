@@ -1,6 +1,8 @@
 package com.example.banking.model;
 
 import jakarta.persistence.*;
+import io.hypersistence.utils.hibernate.type.json.JsonType;
+import org.hibernate.annotations.Type;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,9 +14,13 @@ public class Audit {
     @Column(name = "user_id")
     private Long userId;
     private String operation; // UPDATE or DELETE
-    @Column(columnDefinition = "TEXT")
+    
+    @Type(JsonType.class)
+    @Column(columnDefinition = "jsonb")
     private String oldData;
-    @Column(columnDefinition = "TEXT")
+    
+    @Type(JsonType.class)
+    @Column(columnDefinition = "jsonb")
     private String newData;
     private LocalDateTime timestamp = LocalDateTime.now();
 
