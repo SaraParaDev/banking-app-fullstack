@@ -40,6 +40,7 @@ public class User {
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
+    /** Generates a random account number. */
     private String generateRandomAccountNumber() {
         StringBuilder sb = new StringBuilder();
         sb.append("ACC"); // Prefix for better readability
