@@ -1,8 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://34.68.6.208:5432/banking_app?connectTimeout=30&socketTimeout=30
-    username: banking_user
-    password: 
+    # For Cloud Run, use Cloud SQL Auth Proxy or direct connection
+    url: ${DATABASE_URL:jdbc:postgresql://34.68.6.208:5432/banking_app?connectTimeout=30&socketTimeout=30}
+    username: ${DATABASE_USERNAME:banking_user}
+    password: ${DATABASE_PASSWORD:}
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-timeout: 30000
@@ -32,4 +33,13 @@ logging:
     org.hibernate.SQL: DEBUG
     com.example.banking: DEBUG
 server:
-  port: 8080
+  port: ${PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when-authorized

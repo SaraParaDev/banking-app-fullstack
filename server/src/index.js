@@ -61,12 +61,12 @@ const handleError = (error, res, operation) => {
 app.get('/api/users', async (req, res) => {
     console.log('=== Received GET request for users ===');
     try {
-        const response = await axios.get('http://localhost:8080/api/users', {
+        const response = await axios.get('https://banking-backend-63839693512.us-central1.run.app/api/users', {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            timeout: 5000
+            timeout: 10000
         });
         
         console.log('=== Response from Spring Boot ===');
@@ -94,7 +94,7 @@ app.post('/api/users', async (req, res) => {
     console.log('Request body:', req.body);
     
     try {
-        const response = await axios.post('http://localhost:8080/api/users', req.body, {
+        const response = await axios.post('https://banking-backend-63839693512.us-central1.run.app/api/users', req.body, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -119,12 +119,12 @@ app.put('/api/users/:id', async (req, res) => {
     console.log('Request body:', req.body);
     
     try {
-        const response = await axios.put(`http://localhost:8080/api/users/${userId}`, req.body, {
+        const response = await axios.put(`https://banking-backend-63839693512.us-central1.run.app/api/users/${userId}`, req.body, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            timeout: 5000
+            timeout: 10000
         });
         
         console.log('=== User updated successfully ===');
@@ -143,12 +143,12 @@ app.delete('/api/users/:id', async (req, res) => {
     console.log(`=== Received DELETE request for user ${userId} ===`);
     
     try {
-        const response = await axios.delete(`http://localhost:8080/api/users/${userId}`, {
+        const response = await axios.delete(`https://banking-backend-63839693512.us-central1.run.app/api/users/${userId}`, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            timeout: 5000
+            timeout: 10000
         });
         
         console.log('=== User deleted successfully ===');
@@ -162,7 +162,7 @@ app.delete('/api/users/:id', async (req, res) => {
 
 
 app.use('/api', createProxyMiddleware({
-    target: 'http://localhost:8080',
+    target: 'https://banking-backend-63839693512.us-central1.run.app',
     changeOrigin: true,
     onProxyReq: (proxyReq, req) => {
         console.log('Proxying request:', req.method, req.url);

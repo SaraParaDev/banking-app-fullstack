@@ -1,0 +1,45 @@
+# Exclude build artifacts and dependencies
+target/
+!target/*.jar
+
+# Exclude source control
+.git
+.gitignore
+
+# Exclude IDE files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Exclude OS specific files
+.DS_Store
+Thumbs.db
+
+# Exclude logs
+*.log
+logs/
+
+# Exclude temporary files
+*.tmp
+*.temp
+
+# Exclude documentation
+README.md
+*.md
+
+# Exclude test files
+src/test/
+
+# Exclude Maven wrapper (already copied in Dockerfile)
+.mvn/wrapper/maven-wrapper.jar
+
+# Exclude Cloud Run deployment scripts
+deploy-*.ps1
+deploy-*.sh
+
+# Exclude environment files
+.env
+.env.local
+.env.production
